@@ -1,10 +1,10 @@
-name: Build ACK 5.10 with KSU
+name: Build ACK 5.10 With KSU
 on:
   workflow_dispatch:
     inputs:
       TAG:
         required: true
-        default: "android12-5.10-2023-07"
+        default: "android12-5.10-2023-08"
 
 jobs:
   build:

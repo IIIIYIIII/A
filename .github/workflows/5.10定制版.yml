@@ -1,10 +1,10 @@
-name: Build ACK 5.15 With KSU
+name: Build ACK 5.10 With KSU 定制版
 on:
   workflow_dispatch:
     inputs:
       TAG:
         required: true
-        default: "android13-5.15-2023-08"
+        default: "android12-5.10-2023-08"
 
 jobs:
   build:
@@ -62,9 +62,9 @@ jobs:
         DRIVER_MAKEFILE=$GKI_ROOT/common/drivers/Makefile
         grep -q "kernelsu" $DRIVER_MAKEFILE || echo "obj-y += kernelsu/" >> $DRIVER_MAKEFILE
         echo "[+] Apply KernelSU patches"
-        cd $GKI_ROOT/common/ && git apply $GITHUB_WORKSPACE/KernelSU/.github/patches/5.15/*.patch
+        cd $GKI_ROOT/common/ && git apply $GITHUB_WORKSPACE/KernelSU/.github/patches/5.10/*.patch
         echo "Patch script/setlocalversion"
-        sed -i 's/-dirty//g' $GKI_ROOT/common/scripts/setlocalversion
+        sed -i 's/-dirty/-太极/g' $GKI_ROOT/common/scripts/setlocalversion
         echo "[+] KernelSU setup done."
     - name: Symbol Magic
       run: |
